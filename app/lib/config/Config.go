@@ -1,15 +1,13 @@
 package config
 
 import (
+	"github.com/adKoch/xtb-api/app/lib/log"
 	"github.com/spf13/viper"
-	"github.com/adKoch/metric_market/core/kafka_sample/app/lib/log"
 )
-
-
 
 func LoadConfig(relativeConfigPath string, configFile string, configExtension string) {
 	err := LoadViperConfig(relativeConfigPath, configFile, configExtension)
-	if err !=nil {
+	if err != nil {
 		panic("PANIC: Cannot load config:" + err.Error())
 	}
 }
@@ -23,7 +21,7 @@ func LoadViperConfig(path string, file string, extension string) (err error) {
 	return
 }
 
-func GetConfig(name string) string{
+func GetConfig(name string) string {
 	viper.AutomaticEnv()
 	val := viper.GetString(name)
 	if val == "" {
